@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(motor_ctrl)
 
+set(PLATFORM arm64)
+
 include_directories(include)
 
 link_directories(lib)
@@ -13,7 +15,11 @@ endif()
 
 IF(CMAKE_SYSTEM_NAME MATCHES "Linux")
     IF(BITNESS EQUAL 64)
-        set(EXTRA_LIBS libUnitree_motor_SDK_Linux64.so)
+        IF(${PLATFORM} STREQUAL "arm64")
+            set(EXTRA_LIBS libUnitree_motor_SDK_ARM64.so)
+        ELSE()
+            set(EXTRA_LIBS libUnitree_motor_SDK_Linux64.so)
+        ENDIF()
     ELSEIF(BITNESS EQUAL 32)
         set(EXTRA_LIBS libUnitree_motor_SDK_Linux32.so)
     ENDIF()
