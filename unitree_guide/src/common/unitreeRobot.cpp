@@ -152,7 +152,7 @@ Go1Robot::Go1Robot(){
 
 
 #ifdef COMPILE_WITH_REAL_ROBOT
-    _mass = 10.5;
+    _mass = 12.5; //changed from 10.5 after adding the box sense
     _pcb << 0.04, 0.0, 0.0;
     _Ib = Vec3(0.0792, 0.2085, 0.2265).asDiagonal();
 #endif  // COMPILE_WITH_REAL_ROBOT
